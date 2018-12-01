@@ -2,7 +2,7 @@
 
 - Portfolium API: Proprietary, https://portfolium.com/eula 
 - PrimeNG: MIT, https://github.com/primefaces/primeng/blob/master/LICENSE.md
-
+- NGX-Infinite-Scroll: MIT, https://github.com/orizens/ngx-infinite-scroll/blob/master/LICENSE
 
 ## The MIT License (MIT)
 
