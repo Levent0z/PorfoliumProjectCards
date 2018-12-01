@@ -1,8 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import Entry from 'src/app/models/entry';
 import Constants from 'src/app/constants';
 import { PortfoliumApiService } from 'src/app/services/portfoliumApi';
-import { LazyLoadEvent } from 'primeng/components/common/api';
 import LoggerService from 'src/app/services/logger';
 
 @Component({
@@ -13,21 +12,28 @@ import LoggerService from 'src/app/services/logger';
 export class ProjectCardsComponent implements OnInit {
 
   readonly pageSize: number = Constants.maxPageSize;
+  readonly scrollDistance: number = 4;  // bottom 40% of the page to scroll
+  readonly scrollThrottle: number = 100;  // milliseconds delay after scrolling
+  
 
-  @Input()
-  entries: Entry[];
+  height: number = 700;
+  cachedEntries: Entry[];
 
   constructor(private api: PortfoliumApiService, private log: LoggerService) { }
 
   async ngOnInit() {
-    this.entries = await this.getEntries(0, this.pageSize);
-  }
-  private async getEntries(first: number, rows: number): Promise<Entry[]> {
-    this.log.info(`Loading entries ${first} through ${first + rows - 1}`);
-    return (await this.api.expertEntries(first, rows)); //.filter(entry => entry.visibility);
+    this.cachedEntries = await this.getEntries(0, this.pageSize);
   }
 
-  async lazyLoadEntries(event: LazyLoadEvent) {
-    this.entries = await this.getEntries(event.first, event.rows);
+  private async getEntries(first: number, rows: number): Promise<Entry[]> {
+    this.log.info(`Loading entries ${first} through ${first + rows - 1}`);
+    return (await this.api.expertEntries(first, rows)).filter(entry => entry.visibility);
+  }
+
+  async onScrollDown (ev) {
+    this.log.info(`Scroll down. ${JSON.stringify(ev)}`);   
+
+    const entries: Entry[] = await this.getEntries(this.cachedEntries.length, this.pageSize);
+    this.cachedEntries = [...this.cachedEntries, ...entries];
   }
 }
