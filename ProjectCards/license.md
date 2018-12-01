@@ -1,5 +1,6 @@
 # Licenses
 
+- Portfolium API: Proprietary, https://portfolium.com/eula 
 - PrimeNG: MIT, https://github.com/primefaces/primeng/blob/master/LICENSE.md
 
 
