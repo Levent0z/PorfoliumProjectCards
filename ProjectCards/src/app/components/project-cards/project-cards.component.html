@@ -1,0 +1,10 @@
+<p-virtualScroller [value]="entries" scrollHeight="500px" [itemSize]="100" [rows]="pageSize" [cache]="true" 
+    [lazy]="true" (onLazyLoad)="lazyLoadEntries($event)" [totalRecords]="100">
+    <!-- TODO: add trackBy -->
+    <ng-template let-entry pTemplate="item">
+        <app-project-card [entry]="entry"></app-project-card>        
+    </ng-template>
+    <ng-template let-entry pTemplate="loadingItem">
+        Loading...
+    </ng-template>
+</p-virtualScroller>
