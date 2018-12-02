@@ -1,7 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { FlexModule } from '@angular/flex-layout'
 
 import { CardModule } from 'primeng/card';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,8 +13,6 @@ import LogService from './services/logger';
 import { ProjectCardComponent } from './components/project-card/project-card.component';
 import { ProjectCardsComponent } from './components/project-cards/project-cards.component';
 import { PortfoliumApiService } from './services/portfoliumApi';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-
+    FlexModule,
+    
     InfiniteScrollModule,
 
     // PrimeNG modules
