@@ -1,5 +1,7 @@
 import IEntry from '../interfaces/ientry';
+import Media from './media';
 import Utility from '../utility';
+import Profile from './profile';
 
 export default class Entry {
     id: number;
@@ -30,6 +32,13 @@ export default class Entry {
     category: string;
     category_slug: string;
     liked: boolean;
+    profile: Profile;
+    media: Media[];
+
+    readonly userFullName: string;
+    readonly coverCaption: string;
+    readonly coverUrl: string;
+    readonly avatarUrl: string;
 
     constructor(entry: IEntry) {
         this.id = Utility.toInt(entry.id);
@@ -60,6 +69,19 @@ export default class Entry {
         this.category = entry.category;
         this.category_slug = entry.category_slug;
         this.liked = Utility.toBool(entry.liked);
-    }
 
+        this.profile = new Profile(entry.profile);
+        this.media = entry.media ? entry.media.map(m => new Media(m)) : [];
+
+        this.userFullName = this.profile ? `${this.profile.firstname} ${this.profile.lastname}`.trim() : '';
+        this.avatarUrl = this.profile.getDefaultAvatar();
+
+        const defaultMedia: Media = this.media.find(m => m.default);
+        if (defaultMedia) {
+            if (!defaultMedia.video) {
+                this.coverUrl = defaultMedia.getDefaultCoverImage();
+            }
+            this.coverCaption = defaultMedia.caption;
+        }
+    }
 }

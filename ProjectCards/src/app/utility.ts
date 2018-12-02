@@ -2,7 +2,7 @@ export default class Utility {
 
     static toInt(value: string): number {
         // TODO: Have a more stringent conversion (such as regex) as parseInt is too forgiving
-        return parseInt(value);
+        return typeof value === undefined ? undefined : parseInt(value);
     }
     static toBool(value: string): boolean {
         // Defaults to false if value is anything but 1. 

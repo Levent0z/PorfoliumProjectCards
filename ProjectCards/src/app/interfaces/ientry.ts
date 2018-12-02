@@ -1,3 +1,6 @@
+import IMedia from "./imedia";
+import IProfile from "./iprofile";
+
 export default interface IEntry {
     id: string,
     fk_user_id: string,
@@ -27,4 +30,7 @@ export default interface IEntry {
     category: string,
     category_slug: string,
     liked: string
+
+    profile: IProfile;
+    media: IMedia[];
 }
