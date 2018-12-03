@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FlexModule } from '@angular/flex-layout'
 
 import { CardModule } from 'primeng/card';
+
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,10 +24,11 @@ import { PortfoliumApiService } from './services/portfoliumApi';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
     FlexModule,
-    
+
     InfiniteScrollModule,
 
     // PrimeNG modules

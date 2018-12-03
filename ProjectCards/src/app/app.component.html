@@ -1,7 +1,8 @@
 <div fxFlexFill fxLayout="column">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
+  <header>
+    <h1>{{ title }}</h1>
+    <h2>{{ subtitle }}</h2>
+  </header>
   <div fxFlex style="overflow-y:auto">
     <router-outlet></router-outlet>
   </div>
