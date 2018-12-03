@@ -1,5 +1,13 @@
-<div fxFlexFill>
-  <app-project-cards (isLoadingChange)="isLoading=$event"></app-project-cards>
+<div fxFlexFill fxLayout="column">
+  <p-toolbar>
+    <div class="ui-toolbar-group-right">
+      <span>Sort By: </span>
+      <p-selectButton [disabled]="isLoading" [options]="sortOrders" [(ngModel)]="sortOrder"></p-selectButton>
+    </div>  
+  </p-toolbar>  
+  <div fxFlex>
+    <app-project-cards (isLoadingChange)="isLoading=$event" [sortOrder]="sortOrder"></app-project-cards>
+  </div>
 </div>
 <div class="loadingDiv" *ngIf="isLoading">
   <span style="position: relative; top:-0.25em">Loading...</span><i class="pi pi-spin pi-spinner" style="font-size: 1.5em"></i>

@@ -1,3 +1,5 @@
+import { SortOrder } from "./enums/sortOrder";
+
 export default class Constants {
     static readonly useHttps = true;
     static readonly maxPageSize = 30;
@@ -7,4 +9,5 @@ export default class Constants {
     static readonly avatarHeight = 40;
     static readonly cardHeight = 385 + 20; // Include margin
     static readonly loadThreshold = 10; 
+    static readonly defaultSortOrder = SortOrder.Recent;
 }

@@ -1,12 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, ErrorHandler } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FlexModule } from '@angular/flex-layout'
 
 import { ScrollDispatchModule } from '@angular/cdk/scrolling';
 
 import { CardModule } from 'primeng/card';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { ToolbarModule } from 'primeng/toolbar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,9 +34,12 @@ import { DemoComponent } from './components/demo/demo.component';
     AppRoutingModule,
     FlexModule,
     ScrollDispatchModule,
+    FormsModule,
 
     // PrimeNG modules
     CardModule,
+    SelectButtonModule,
+    ToolbarModule
   ],
   providers: [
     { provide: ErrorHandler, useClass: AppErrorHandler },

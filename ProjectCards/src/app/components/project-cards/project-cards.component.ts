@@ -1,15 +1,16 @@
-import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input, OnChanges, SimpleChanges } from '@angular/core';
 import Entry from 'src/app/models/entry';
 import Constants from 'src/app/constants';
 import { PortfoliumApiService } from 'src/app/services/portfoliumApi';
 import LoggerService from 'src/app/services/logger';
+import { SortOrder } from 'src/app/enums/sortOrder';
 
 @Component({
   selector: 'app-project-cards',
   templateUrl: './project-cards.component.html',
   styleUrls: ['./project-cards.component.scss']
 })
-export class ProjectCardsComponent implements OnInit {
+export class ProjectCardsComponent implements OnInit, OnChanges {
 
   @Input()
   pageSize: number = Constants.maxPageSize;
@@ -19,6 +20,9 @@ export class ProjectCardsComponent implements OnInit {
 
   @Input()
   loadThreshold: number = Constants.loadThreshold;
+
+  @Input()
+  sortOrder: SortOrder = Constants.defaultSortOrder;
 
   cachedEntries: Entry[];
 
@@ -38,7 +42,7 @@ export class ProjectCardsComponent implements OnInit {
 
   constructor(private api: PortfoliumApiService, private log: LoggerService) { }
 
-  async ngOnInit() {
+  private async initLoad() {
     this.setIsLoading(true);
     try {
       this.cachedEntries = await this.getEntries(0, this.pageSize);
@@ -48,9 +52,19 @@ export class ProjectCardsComponent implements OnInit {
     }
   }
 
+  ngOnInit() {
+    this.initLoad();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.sortOrder || changes.pageSize) {
+      this.initLoad();
+    }
+  }
+
   private async getEntries(first: number, rows: number): Promise<Entry[]> {
     this.log.info(`Loading entries ${first} through ${first + rows - 1}`);
-    return (await this.api.expertEntries(first, rows)).filter(entry => entry.visibility);
+    return (await this.api.expertEntries(first, rows, this.sortOrder)).filter(entry => entry.visibility);
   }
 
   async onScrollDown(ev) {
