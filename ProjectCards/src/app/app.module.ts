@@ -8,8 +8,6 @@ import { ScrollDispatchModule } from '@angular/cdk/scrolling';
 
 import { CardModule } from 'primeng/card';
 
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import AppErrorHandler from './services/appErrorHandler';
@@ -33,8 +31,6 @@ import { DemoComponent } from './components/demo/demo.component';
     AppRoutingModule,
     FlexModule,
     ScrollDispatchModule,
-
-    InfiniteScrollModule,
 
     // PrimeNG modules
     CardModule,
