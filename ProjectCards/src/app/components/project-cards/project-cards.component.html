@@ -1,4 +1,8 @@
 <div #div class="full-space">
+    <div *ngIf="!isLoading && !cachedEntries || !cachedEntries.length" class="emptyResults">
+        <i class="fas fa-ban"></i>
+        No entries.
+    </div>
     <div class="scroll-container">
         <cdk-virtual-scroll-viewport [itemSize]="cardHeight" [style.height.%]="100" (scrolledIndexChange)="onScrolledIndexChange($event)">
             <div class="list-container">
