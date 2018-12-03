@@ -39,6 +39,7 @@ export default class Entry {
     readonly coverCaption: string;
     readonly coverUrl: string;
     readonly avatarUrl: string;
+    readonly lastUpdate: string;
 
     constructor(entry: IEntry) {
         this.id = Utility.toInt(entry.id);
@@ -83,5 +84,7 @@ export default class Entry {
             }
             this.coverCaption = defaultMedia.caption;
         }
+
+        this.lastUpdate = this.updated_at.toLocaleDateString("en-US", { month: 'long', day: 'numeric', year: 'numeric' })
     }
 }

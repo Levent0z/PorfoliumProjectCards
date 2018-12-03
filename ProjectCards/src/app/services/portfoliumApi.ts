@@ -47,9 +47,10 @@ export class PortfoliumApiService {
             offset: first.toString(),
             limit: rows.toString()
         };
-        if (sort) {
+        if (typeof sort !== 'undefined') {
             params.sort = PortfoliumApiService.sortOrderToString(sort);
         }
+
         if (typeof schoolId !== 'undefined') {
             params.school_id = schoolId.toString();
         }
