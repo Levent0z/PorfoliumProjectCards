@@ -1,23 +1,27 @@
-import { ErrorHandler } from "@angular/core";
+import { ErrorHandler, Injectable } from "@angular/core";
 
+@Injectable()
 export default class AppErrorHandler implements ErrorHandler {
 
-    constructor() {
-    }
+    constructor() { }
 
     handleError(error: any): void {
-        if (typeof error === 'string') {
-            console.error(error);
-            return;
-        }
+        let errorMsg: string;
 
-        if (error instanceof Error) {
-            console.error(error.message);
+        if (typeof error === 'string') {
+            errorMsg = error;
+            console.error(errorMsg);
+        } else if (error instanceof Error) {
+            errorMsg = error.message;
+            console.error(errorMsg);
 
             // TODO: Check environment. Assume development
             if (error.stack) {
                 console.debug(error.stack);
             }
+        }
+
+        if (errorMsg) {         
             return;
         }
 
