@@ -1,9 +1,9 @@
 import { Component, OnInit, EventEmitter, Output, Input, OnChanges, SimpleChanges } from '@angular/core';
-import Entry from 'src/app/models/entry';
-import Constants from 'src/app/constants';
-import { PortfoliumApiService } from 'src/app/services/portfoliumApi';
-import LoggerService from 'src/app/services/logger';
-import { SortOrder } from 'src/app/enums/sortOrder';
+import Entry from '../../models/entry';
+import Constants from '../../constants';
+import { PortfoliumApiService } from '../../services/portfoliumApi';
+import LoggerService from '../../services/logger';
+import { SortOrder } from '../../enums/sortOrder';
 
 @Component({
   selector: 'app-project-cards',

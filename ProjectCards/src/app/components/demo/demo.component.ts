@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SortOrder } from 'src/app/enums/sortOrder';
-import Constants from 'src/app/constants';
+import { SortOrder } from '../../enums/sortOrder';
+import Constants from '../../constants';
 import { SelectItem } from 'primeng/components/common/selectitem';
 
 @Component({
