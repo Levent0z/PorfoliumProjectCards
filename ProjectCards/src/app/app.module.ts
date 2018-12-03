@@ -15,12 +15,14 @@ import LogService from './services/logger';
 import { ProjectCardComponent } from './components/project-card/project-card.component';
 import { ProjectCardsComponent } from './components/project-cards/project-cards.component';
 import { PortfoliumApiService } from './services/portfoliumApi';
+import { DemoComponent } from './components/demo/demo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProjectCardComponent,
     ProjectCardsComponent,
+    DemoComponent,
   ],
   imports: [
     BrowserModule,
