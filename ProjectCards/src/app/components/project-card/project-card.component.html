@@ -1,6 +1,13 @@
 <p-card *ngIf="entry" styleClass="ui-card-shadow">
   <p-header *ngIf="entry.coverUrl">
-    <img class="cover-image" [src]="entry.coverUrl" [alt]="entry.coverCaption">
+    <div>
+      <div class="tags">
+        <p *ngIf="entry.expert" class="tag tagExpert">Expert</p>
+        <p *ngIf="entry.featured" class="tag tagFeatured">Pick of the Week</p>
+        <p *ngIf="entry.spotlighted" class="tag tagSpotlighted">Staff Pick</p>
+      </div>
+      <img class="cover-image" [src]="entry.coverUrl" [alt]="entry.coverCaption">
+    </div>
   </p-header>
   <div>
     <div class="ui-card-title" [title]="entry.title">
@@ -15,6 +22,10 @@
     {{ entry.description }}
   </div>
   <p-footer>
-    Likes: {{ entry.likes }}
+    <div fxLayout="row" fxLayoutGap="12px">
+      <div fxFlex></div>
+      <div class="views"><i class="fas fa-eye"></i><span>{{ entry.views }}</span></div>
+      <div class="likes"><i class="fas fa-heart"></i><span>{{ entry.likes }}</span></div>
+    </div>
   </p-footer>
 </p-card>

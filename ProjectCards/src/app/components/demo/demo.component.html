@@ -2,5 +2,5 @@
   <app-project-cards (isLoadingChange)="isLoading=$event"></app-project-cards>
 </div>
 <div class="loadingDiv" *ngIf="isLoading">
-  Loading...
+  <span style="position: relative; top:-0.25em">Loading...</span><i class="pi pi-spin pi-spinner" style="font-size: 1.5em"></i>
 </div>

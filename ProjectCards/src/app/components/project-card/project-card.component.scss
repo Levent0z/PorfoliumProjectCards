@@ -1,3 +1,35 @@
+@import '../../../constants';
+
+i {
+    margin: 0 4px;
+}
 .avatar-image {
     border-radius: 50%;
+}
+
+.tags {    
+    position: absolute;
+    color: $app-text-color;
+    margin: 8px 0 0 8px;
+
+    p {
+        padding: 6px;
+    }
+}
+
+.tag {
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.tagExpert {
+    background-color: #05806c;
+}
+
+.tagFeatured {
+    background-color: #7668cf;
+}
+
+.tagSpotlighted { // Staff Pick?
+    background-color: #2179cf;
 }
