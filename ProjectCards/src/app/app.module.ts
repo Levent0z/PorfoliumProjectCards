@@ -4,6 +4,8 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FlexModule } from '@angular/flex-layout'
 
+import { ScrollDispatchModule } from '@angular/cdk/scrolling';
+
 import { CardModule } from 'primeng/card';
 
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
@@ -30,6 +32,7 @@ import { DemoComponent } from './components/demo/demo.component';
     HttpClientModule,
     AppRoutingModule,
     FlexModule,
+    ScrollDispatchModule,
 
     InfiniteScrollModule,
 

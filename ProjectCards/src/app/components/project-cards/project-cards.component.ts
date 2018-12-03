@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import Entry from 'src/app/models/entry';
 import Constants from 'src/app/constants';
 import { PortfoliumApiService } from 'src/app/services/portfoliumApi';
@@ -11,9 +11,14 @@ import LoggerService from 'src/app/services/logger';
 })
 export class ProjectCardsComponent implements OnInit {
 
-  readonly pageSize: number = Constants.maxPageSize;
-  readonly scrollDistance: number = 4;  // bottom 40% of the page to scroll
-  readonly scrollThrottle: number = 100;  // milliseconds delay after scrolling
+  @Input()
+  pageSize: number = Constants.maxPageSize;
+
+  @Input()
+  cardHeight: number = Constants.cardHeight;
+
+  @Input()
+  loadThreshold: number = Constants.loadThreshold;
 
   cachedEntries: Entry[];
 
@@ -60,6 +65,15 @@ export class ProjectCardsComponent implements OnInit {
       finally {
         this.setIsLoading(false);
       }
+    }
+  }
+
+  onScrolledIndexChange(event) {
+    // Note: load threshold is currently expressed as the difference between the indexes of the bottom of the list and the top entry in the view port.
+    // A possible improvement is to (somehow) retrieve the virtual scroll position and based on a percentage expressed by the load threshold, call onScrollDown.
+
+    if (this.cachedEntries && event >= this.cachedEntries.length - this.loadThreshold) {
+      this.onScrollDown(event);
     }
   }
 }

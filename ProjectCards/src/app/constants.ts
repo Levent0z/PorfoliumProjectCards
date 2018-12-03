@@ -5,4 +5,6 @@ export default class Constants {
     static readonly coverSizeHeight = 200;
     static readonly avatarWidth = 40;    
     static readonly avatarHeight = 40;
+    static readonly cardHeight = 385 + 20; // Include margin
+    static readonly loadThreshold = 10; 
 }

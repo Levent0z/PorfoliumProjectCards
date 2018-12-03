@@ -1,10 +1,11 @@
-<div class="fullSpace" style="overflow-y:auto">
-    <div class="scroll-container" infinite-scroll [infiniteScrollDistance]="scrollDistance" [infiniteScrollThrottle]="scrollThrottle"
-        [scrollWindow]="false" (scrolled)="onScrollDown()">
-        <div class="list-container">
-            <div *ngFor="let entry of cachedEntries" class="project-card">
-                <app-project-card [entry]="entry"></app-project-card>
+<div #div class="full-space">
+    <div class="scroll-container">
+        <cdk-virtual-scroll-viewport [itemSize]="cardHeight" [style.height.%]="100" (scrolledIndexChange)="onScrolledIndexChange($event)">
+            <div class="list-container">
+                <div *cdkVirtualFor="let entry of cachedEntries" class="project-card">
+                    <app-project-card [entry]="entry"></app-project-card>
+                </div>
             </div>
-        </div>
+        </cdk-virtual-scroll-viewport>
     </div>
 </div>
