@@ -1,3 +1,5 @@
+@import '../../../constants';
+
 .container {
     overflow: auto;
     min-height: 100px;    
@@ -7,4 +9,5 @@
 
 .projectCard {
     margin: 20px;
+    width: $card-width-px;
 }
