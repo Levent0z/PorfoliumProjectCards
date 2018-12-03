@@ -12,7 +12,8 @@ i {
     color: $app-text-color;
     margin: 8px 0 0 8px;
 
-    p {
+    span {
+        display: block;
         padding: 6px;
     }
 }
@@ -20,6 +21,7 @@ i {
 .tag {
     margin-bottom: 4px;
     text-transform: uppercase;
+    border-radius: 2px;
 }
 
 .tagExpert {

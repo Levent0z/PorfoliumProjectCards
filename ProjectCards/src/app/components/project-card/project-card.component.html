@@ -1,10 +1,10 @@
 <p-card *ngIf="entry" styleClass="ui-card-shadow">
   <p-header *ngIf="entry.coverUrl">
     <div>
-      <div class="tags">
-        <p *ngIf="entry.expert" class="tag tagExpert">Expert</p>
-        <p *ngIf="entry.featured" class="tag tagFeatured">Pick of the Week</p>
-        <p *ngIf="entry.spotlighted" class="tag tagSpotlighted">Staff Pick</p>
+      <div class="tags" fxLayout="column" fxLayoutGap="4px" fxLayoutAlign="start start">
+        <span *ngIf="entry.expert" class="tag tagExpert">Expert</span>
+        <span *ngIf="entry.featured" class="tag tagFeatured">Pick of the Week</span>
+        <span *ngIf="entry.spotlighted" class="tag tagSpotlighted">Staff Pick</span>
       </div>
       <img class="cover-image" [src]="entry.coverUrl" [alt]="entry.coverCaption">
     </div>
