@@ -1,5 +1,10 @@
 .container {
     overflow: auto;
-    min-height: 100px;
+    min-height: 100px;    
     height: 100%;
+    min-width: 200px;
+}
+
+.projectCard {
+    margin: 20px;
 }

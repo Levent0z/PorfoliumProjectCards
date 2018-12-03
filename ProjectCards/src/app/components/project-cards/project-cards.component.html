@@ -1,6 +1,8 @@
 <div class="container" infinite-scroll [infiniteScrollDistance]="scrollDistance" [infiniteScrollThrottle]="scrollThrottle"
     [scrollWindow]="false" (scrolled)="onScrollDown()">
     <ng-container *ngFor="let entry of cachedEntries">
-        <app-project-card [entry]="entry"></app-project-card>
+        <div class="projectCard">
+            <app-project-card [entry]="entry"></app-project-card>
+        </div>
     </ng-container>
 </div>

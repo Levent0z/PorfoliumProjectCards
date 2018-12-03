@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import Entry from 'src/app/models/entry';
 import Constants from 'src/app/constants';
 import { PortfoliumApiService } from 'src/app/services/portfoliumApi';
@@ -17,10 +17,30 @@ export class ProjectCardsComponent implements OnInit {
 
   cachedEntries: Entry[];
 
+  @Output()
+  public readonly isLoadingChange = new EventEmitter<boolean>();
+
+  private _isLoading: boolean;
+  public get isLoading(): boolean {
+    return this._isLoading;
+  }
+  private setIsLoading(value: boolean) {
+    if (this._isLoading !== value) {
+      this._isLoading = value;
+      this.isLoadingChange.emit(value);
+    }
+  }
+
   constructor(private api: PortfoliumApiService, private log: LoggerService) { }
 
   async ngOnInit() {
-    this.cachedEntries = await this.getEntries(0, this.pageSize);
+    this.setIsLoading(true);
+    try {
+      this.cachedEntries = await this.getEntries(0, this.pageSize);
+    }
+    finally {
+      this.setIsLoading(false);
+    }
   }
 
   private async getEntries(first: number, rows: number): Promise<Entry[]> {
@@ -31,7 +51,15 @@ export class ProjectCardsComponent implements OnInit {
   async onScrollDown(ev) {
     this.log.info(`Scroll down. ${JSON.stringify(ev)}`);
 
-    const entries: Entry[] = await this.getEntries(this.cachedEntries.length, this.pageSize);
-    this.cachedEntries = [...this.cachedEntries, ...entries];
+    if (!this.isLoading) {
+      this.setIsLoading(true);
+      try {
+        const entries: Entry[] = await this.getEntries(this.cachedEntries.length, this.pageSize);
+        this.cachedEntries = [...this.cachedEntries, ...entries];
+      }
+      finally {
+        this.setIsLoading(false);
+      }
+    }
   }
 }

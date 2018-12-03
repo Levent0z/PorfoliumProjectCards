@@ -1,3 +1,20 @@
-<p-card [header]="entry?.title">
-  {{ entry?.description }}
+<p-card *ngIf="entry" styleClass="ui-card-shadow">
+  <p-header *ngIf="entry.coverUrl">
+    <img class="cover-image" [src]="entry.coverUrl" [alt]="entry.coverCaption">
+  </p-header>
+  <div>
+    <div class="ui-card-title" [title]="entry.title">
+      {{ entry.title }}
+    </div>
+    <div class="ui-card-subtitle">
+      <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px">
+        <img class="avatar-image" [src]="entry.avatarUrl" [alt]="Avatar">
+        <span>{{ entry.userFullName }}</span>
+      </div>
+    </div>
+    {{ entry.description }}
+  </div>
+  <p-footer>
+    Likes: {{ entry.likes }}
+  </p-footer>
 </p-card>
