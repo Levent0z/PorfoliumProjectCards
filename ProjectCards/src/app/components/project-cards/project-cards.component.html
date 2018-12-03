@@ -1,8 +1,10 @@
-<div class="container" infinite-scroll [infiniteScrollDistance]="scrollDistance" [infiniteScrollThrottle]="scrollThrottle"
-    [scrollWindow]="false" (scrolled)="onScrollDown()">
-    <ng-container *ngFor="let entry of cachedEntries">
-        <div class="projectCard">
-            <app-project-card [entry]="entry"></app-project-card>
+<div class="fullSpace" style="overflow-y:auto">
+    <div class="scroll-container" infinite-scroll [infiniteScrollDistance]="scrollDistance" [infiniteScrollThrottle]="scrollThrottle"
+        [scrollWindow]="false" (scrolled)="onScrollDown()">
+        <div class="list-container">
+            <div *ngFor="let entry of cachedEntries" class="project-card">
+                <app-project-card [entry]="entry"></app-project-card>
+            </div>
         </div>
-    </ng-container>
+    </div>
 </div>

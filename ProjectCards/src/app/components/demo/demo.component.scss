@@ -1,8 +1,10 @@
+@import  '../../../constants';
+
 .loadingDiv {
     position: fixed;
     right: 40px;
     bottom: 40px;
-    background-color: rgb(27, 100, 172) ;
-    color: white;
+    background-color: $porfolium-blue;
+    color: $app-text-color;
     padding: 16px;
 }

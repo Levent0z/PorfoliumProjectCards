@@ -1,11 +1,17 @@
-@import '../../../constants';
+@import '../../../_constants.scss';
 
-.container {
+.scroll-container {
     overflow: auto;
     height: 100%;
 }
 
-.projectCard {
+.list-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: $card-width-px + 2 * $card-width-h-margin;
+}
+
+.project-card {
     margin: 20px;
     width: $card-width-px;
 }

@@ -1,7 +1,11 @@
+@import  '../constants';
+
 header {
     text-align: center;
     height: 75px;
     margin: 16px;
+    background-color: $porfolium-blue;
+    color: $app-text-color;
 }
 h1, h2 {
     margin: 0 0 8px 0;

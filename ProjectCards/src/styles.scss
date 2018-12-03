@@ -22,6 +22,10 @@ body {
     @include fullSpace();
 }
 
+.fullSpace {
+    @include fullSpace();
+}
+
 .ui-card-title {
     @include noWrapEllipsis;
 }
