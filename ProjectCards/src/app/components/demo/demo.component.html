@@ -1,3 +1,6 @@
 <div fxFlex style="overflow-y:auto">
-  <app-project-cards></app-project-cards>
+  <app-project-cards (isLoadingChange)="isLoading=$event"></app-project-cards>
+</div>
+<div class="loadingDiv" *ngIf="isLoading">
+  Loading...
 </div>
